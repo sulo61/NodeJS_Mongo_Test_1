@@ -1,0 +1,14 @@
+extends layout
+
+block content
+    br
+    h3= title
+    br
+    form(method="post", action="add")
+        fieldset
+            label="First Name"
+            input(type="text", name="first_name")
+            label="Last Name"
+            input(type="text", name="last_name")
+            br
+            button.btn.btn-success(type="submit")= "Add"

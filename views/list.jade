@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    br
+    h3= title
+    br
+    table.table
+        thread
+            tr
+                th= "#"
+                th= "First name"
+                th= "Last name"
+                th= "Options"
+        tbody
+            each user, u in usersList
+                tr
+                    td= (u + 1)
+                    td= user.first_name
+                    td= user.last_name
+                    td
+                        button.remove.btn-mini.btn-danger(user_id = user._id) Remove
+
+    script.
+        $('button.remove').on('click', function () {
+            var user_id = $(this).attr('user_id');
+            $.ajax({
+                method: "POST",
+                url: "/remove",
+                data: {"user_id": user_id},
+                success: function (result) {
+                    window.location.reload();
+                }
+            })
+        });
