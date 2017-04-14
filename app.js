@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var users = require('./routes/users');
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('127.0.0.1:27017/test5');
+var db = monk('mongodb://admin:admin@ds159880.mlab.com:59880/nodejs-mongo-test-1-db');
 
 var app = express();
 
