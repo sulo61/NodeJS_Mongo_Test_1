@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
+const logout = require('express-passport-logout');
 
 const Db = require('../database/index.js').Db;
 const db = new Db();
@@ -40,12 +41,9 @@ router.get('/login', function (req, res, next) {
     res.render('noauth/login', {env: env})
 });
 
-router.post('/login', function (req, res, next) {
-
-});
-
-router.post('/logout', function (req, res, next) {
-
+router.get('/logout', function (req, res, next) {
+    logout();
+    res.redirect("/login");
 });
 
 router.post('/add', ensureLoggedIn, function (req, res, next) {
